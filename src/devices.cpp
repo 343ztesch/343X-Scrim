@@ -5,12 +5,13 @@
 
 bool clampOut = true;
 bool shiftKey = false;
+bool intakePressed = false;
 bool intakeDirection;
 
 pros::ADIDigitalOut mogoClamp('A');
 
-pros::Motor intake (1, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor intake2 (10, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor intake (2, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor intake2 (-10, pros::E_MOTOR_GEARSET_18, true, pros::E_MOTOR_ENCODER_DEGREES);
 
 pros::Motor leftFront(12, pros::E_MOTOR_GEARSET_06, true); 
 pros::Motor leftBack(13, pros::E_MOTOR_GEARSET_06, true); 
