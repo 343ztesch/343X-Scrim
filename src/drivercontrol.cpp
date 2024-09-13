@@ -61,19 +61,24 @@ void tank_drive(double curve) {
     set_tank(l_stick, r_stick);
 }
 
-void hold_clamp(pros::Controller& controller, bool clampOut) {
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+void hold_clamp() {
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
         clampOut = false;
     } else {
         clampOut = true;
     }
 }
 
-void determine_intake_direction(pros::Controller& controller, bool intakeDirection) {
-    if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
-        intakeDirection = true;
-    } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)){
-        intakeDirection = false;
+void run_intake() {
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+        intake = 127;
+        intake2 = 127;
+    } else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+        intake = -127;
+        intake2 = -127;
+    } else {
+        intake = 0;
+        intake2 = 0;
     }
 }
 
