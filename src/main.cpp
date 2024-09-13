@@ -10,13 +10,7 @@
 
 // Enter your autons here!
 AutonFunction autonFunctions[] = {
-    {"Skills", skills},
-    {"Right Far Rush", rightSideFarRush},
-    {"Left Elims", leftSideElims},
-    {"Left Quals", leftSideQual},
-    {"Right 6 Ball", rightSide6Ball},
-    {"Right 5 Ball", rightSideQuals},
-    {"Right 3 Bar", rightSideQualsTouchBar},
+
 };
 
 // this is needed for LVGL displaying! Do not touch!
@@ -61,7 +55,7 @@ void initialize() {
     // pid and curve inits
     ezTempChassisInits();
     intake.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-    ratchet.set_value(true);
+    intake2.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 }
 
 /**
@@ -144,6 +138,8 @@ void opcontrol() {
             motorCheckDT.suspend(); 
             motorCheckOther.suspend(); 
         }
+        run_intake();
+        hold_clamp();
 
 		pros::delay(ez::util::DELAY_TIME);
 	}
